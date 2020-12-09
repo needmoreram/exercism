@@ -1,4 +1,7 @@
 module Acronym (abbreviate) where
+import Data.Char
 
 abbreviate :: String -> String
-abbreviate xs = error "You need to implement this function."
+abbreviate xs = concat $ map headAndCaps (words xs) where
+    headAndCaps (y:ys) = [toUpper y] ++ (filter (\c -> isUpper c) ys)
+    headAndCaps [] = []
